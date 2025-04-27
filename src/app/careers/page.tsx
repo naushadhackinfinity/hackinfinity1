@@ -51,7 +51,7 @@ export default function CareersPage() {
 
         // Extract all unique skills
         const skills = new Set<string>();
-        data.forEach(career => {
+        data.forEach((career: CareerPath) => {
           career.required_skills?.forEach(skill => {
             if (skill) skills.add(skill);
           });
@@ -70,7 +70,7 @@ export default function CareersPage() {
 
   useEffect(() => {
     // Filter careers based on search term and selected skills
-    const filtered = careers.filter(career => {
+    const filtered = careers.filter((career: CareerPath) => {
       const matchesSearch = searchTerm === '' ||
         career.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         career.description.toLowerCase().includes(searchTerm.toLowerCase());

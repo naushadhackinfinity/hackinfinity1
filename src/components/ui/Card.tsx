@@ -29,27 +29,32 @@ export function Card({
   };
 
   const hoverClass = hover ? 'card-hover' : '';
-  const CardComponent = animate ? motion.div : 'div';
 
-  const animationProps = animate ? {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
-    whileHover: hover ? {
-      y: -8,
-      boxShadow: '0 25px 30px -12px rgba(0, 0, 0, 0.15)',
-      scale: 1.02,
-    } : {},
-  } : {};
+  if (animate) {
+    return (
+      <motion.div
+        className={`${variants[variant]} ${hoverClass} ${className}`}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+        whileHover={hover ? {
+          y: -8,
+          boxShadow: '0 25px 30px -12px rgba(0, 0, 0, 0.15)',
+          scale: 1.02,
+        } : undefined}
+      >
+        {children}
+      </motion.div>
+    );
+  }
 
   return (
-    <CardComponent
+    <div
       className={`${variants[variant]} ${hoverClass} ${className}`}
-      {...animationProps}
       {...props}
     >
       {children}
-    </CardComponent>
+    </div>
   );
 }
 

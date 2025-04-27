@@ -173,16 +173,16 @@ export async function getCareerRecommendations(userId: string) {
 
   // Extract assessment data
   const personalityResults = assessmentResults
-    ?.filter(r => r.assessment_type === 'personality')
-    .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())[0];
+    ?.filter((r: any) => r.assessment_type === 'personality')
+    .sort((a: any, b: any) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())[0];
 
   const skillsResults = assessmentResults
-    ?.filter(r => r.assessment_type === 'skills')
-    .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())[0];
+    ?.filter((r: any) => r.assessment_type === 'skills')
+    .sort((a: any, b: any) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())[0];
 
   const interestsResults = assessmentResults
-    ?.filter(r => r.assessment_type === 'interests')
-    .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())[0];
+    ?.filter((r: any) => r.assessment_type === 'interests')
+    .sort((a: any, b: any) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())[0];
 
   // Create maps of assessment categories to scores
   const personalityScores: Record<string, number> = {};
@@ -270,7 +270,7 @@ export async function getCareerRecommendations(userId: string) {
   };
 
   // Calculate match scores for each career path
-  const recommendations = careerPaths.map(career => {
+  const recommendations = careerPaths.map((career: any) => {
     // Base score starts at 0
     let matchScore = 0;
     let totalFactors = 0;
@@ -278,7 +278,7 @@ export async function getCareerRecommendations(userId: string) {
     // 1. Match based on skills from profile (25% weight)
     const skillsWeight = 0.25;
     if (userSkills.size > 0 && career.required_skills && career.required_skills.length > 0) {
-      const matchingSkills = career.required_skills.filter(skill => userSkills.has(skill)).length;
+      const matchingSkills = career.required_skills.filter((skill: string) => userSkills.has(skill)).length;
       const skillsScore = (matchingSkills / career.required_skills.length) * 100;
       matchScore += skillsScore * skillsWeight;
       totalFactors += skillsWeight;
@@ -357,7 +357,7 @@ export async function getCareerRecommendations(userId: string) {
   });
 
   // Sort by match score (highest first)
-  const sortedRecommendations = recommendations.sort((a, b) => b.matchScore - a.matchScore);
+  const sortedRecommendations = recommendations.sort((a: any, b: any) => b.matchScore - a.matchScore);
 
   return { data: sortedRecommendations, error: null };
 }

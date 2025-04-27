@@ -239,7 +239,7 @@ export function ChatbotModal({ isOpen, onClose }: ChatbotModalProps) {
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyDown={handleKeyDown}
                 placeholder="Ask a specific career question..."
-                className="w-full border-2 border-indigo-300 dark:border-indigo-700 rounded-full px-4 py-3 pr-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 shadow-sm"
+                className="w-full border-2 border-indigo-300 dark:border-indigo-700 rounded-full px-4 py-3 pr-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 dark:bg-gray-700 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 shadow-sm"
               />
               {isTyping && (
                 <div className="absolute right-3 top-1/2 transform -translate-y-1/2">

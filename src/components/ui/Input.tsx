@@ -84,7 +84,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               icon && iconPosition === 'left' ? 'pl-10' : ''
             } ${
               icon && iconPosition === 'right' ? 'pr-10' : ''
-            } focus:outline-none focus:ring-4 shadow-sm hover:shadow-md focus:shadow-md ${className}`}
+            } focus:outline-none focus:ring-4 shadow-sm hover:shadow-md focus:shadow-md text-gray-900 dark:text-white ${className}`}
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
             {...props}

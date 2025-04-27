@@ -5,15 +5,24 @@
 [build.environment]
   NETLIFY_NEXT_PLUGIN_SKIP = "true"
   NODE_VERSION = "18"
+  NEXT_PUBLIC_SUPABASE_URL = "https://njwmccscrsylnbvyljws.supabase.co"
+  NEXT_PUBLIC_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5qd21jY3NjcnN5bG5idnlsandzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU2NjcyNDIsImV4cCI6MjA2MTI0MzI0Mn0.Ginvl1NrqTWy8rmUx-9bul6ly-wS5Gb5dnqpOWGus6g"
+  NEXT_PUBLIC_GEMINI_API_KEY = "AIzaSyBTUkkTKO0RdjBXoThWZmOuZyqqdvRn3no"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-# Handle redirects for SPA routing
+# Handle redirects for Next.js routing
 [[redirects]]
   from = "/*"
-  to = "/index.html"
+  to = "/_next/static/chunks/pages/404.js"
+  status = 404
+
+[[redirects]]
+  from = "/*"
+  to = "/index"
   status = 200
+  force = false
 
 # Cache control for static assets
 [[headers]]
